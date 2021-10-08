@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Lab_2_Prague_Parking
+namespace testing_things
 {
     class Program
     {
@@ -26,7 +26,10 @@ namespace Lab_2_Prague_Parking
                     //}
                 }
             }
+
+
         }
+
         public static string[] parkingGarage = new string[100];
         static void ParkingSorting(string Input)
         {
@@ -52,33 +55,33 @@ namespace Lab_2_Prague_Parking
 
 
                 }
-                else if (parkingGarage[R].IndexOf("MC", 0, 2) > 0)
+                else if (parkingGarage[R].IndexOf("MC", 0, 2) > -1)
                 {
+                    string combined = "";
                     int pos = 0;
-                    string mc2 = "";
-                    string combind = (parkingGarage[R] + "|" + Input);
 
-                    for (int length = 0; length < Input.Length; length++)
+
+
+                    if (test != parkingGarage[R])
                     {
-                        if (char.IsWhiteSpace(combind[length]))
+                         combined = parkingGarage[R] + "|" + test;
+
+                        Console.WriteLine("your spot is {0} {1}", R + 1, combined);
+                        //break;
+                    }
+                    for (int length = 0; length < combined.Length; length++)
+                    {
+                        if (char.IsSymbol(combined[length]))
                         {
-                            mc2 = combind.Replace(" ", "#");
+                            pos = length;
+                            Console.WriteLine("ýeeee");
                         }
                     }
-                    parkingGarage[R] = mc2;
-                    //for (int length = 0; length < combind.Length; length++)
-                    //{
-                    //    if (char.IsSymbol(mc2[length]))
-                    //    {
-                    //        pos = length;
-                    //    }
-                    //}
-                    Console.WriteLine("Your spot is {0} {1}", R + 1, mc2);
-                    //if (char.IsSymbol(parkingGarage[R], pos))
-                    //{
-                    //    Console.WriteLine("testing");
-                    //}
-                    //else { break; }
+                    break;
+                }
+                else
+                {
+                    break;
                 }
             }
         }
