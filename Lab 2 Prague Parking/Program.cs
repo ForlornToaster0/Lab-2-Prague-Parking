@@ -27,16 +27,16 @@ namespace Lab_2_Prague_Parking
                 }
             }
         }
-        public static string[] parkingGarage = new string[100];
+        public static string[] parkingGarage = new string[100];       //Parking spaces
         static void ParkingSorting(string Input)
         {
             string test = "";
             int activeProgram = 0;
-            Random random = new Random();
+            Random random = new Random();               //Generatng random number for the parkin spaces
             int R = random.Next(0, 2);
             while (activeProgram < parkingGarage.Length)
             {
-                for (int length = 0; length < Input.Length; length++)
+                for (int length = 0; length < Input.Length; length++)     //Adding CAR# och MC# before the registration plate.
                 {
                     if (char.IsWhiteSpace(Input[length]))
                     {
@@ -45,40 +45,31 @@ namespace Lab_2_Prague_Parking
                 }
                 if (parkingGarage[R] == null)
                 {
-                    activeProgram++;
+                    activeProgram++;                                       //Filling parking space if it's empty
                     parkingGarage[R] = test;
                     Console.WriteLine("your spot is {0} {1}", R + 1, parkingGarage[R]);
 
 
 
                 }
-                else if (parkingGarage[R].IndexOf("MC", 0, 2) > 0)
+                else if (parkingGarage[R].IndexOf("MC", 0, 2) > -1 && test.IndexOf("MC", 0, 2) > -1)      // checking if the spot is occupied by a MC. If it's one more MC can park there.
                 {
-                    int pos = 0;
-                    string mc2 = "";
-                    string combind = (parkingGarage[R] + "|" + Input);
 
-                    for (int length = 0; length < Input.Length; length++)
+                    if (test != parkingGarage[R] && !parkingGarage[R].Contains("|"))
                     {
-                        if (char.IsWhiteSpace(combind[length]))
-                        {
-                            mc2 = combind.Replace(" ", "#");
-                        }
+                        parkingGarage[R] = parkingGarage[R] + "|" + test;
+
+
+                        Console.WriteLine("your spot is {0} {1}", R + 1, parkingGarage[R]);
+
                     }
-                    parkingGarage[R] = mc2;
-                    //for (int length = 0; length < combind.Length; length++)
-                    //{
-                    //    if (char.IsSymbol(mc2[length]))
-                    //    {
-                    //        pos = length;
-                    //    }
-                    //}
-                    Console.WriteLine("Your spot is {0} {1}", R + 1, mc2);
-                    //if (char.IsSymbol(parkingGarage[R], pos))
-                    //{
-                    //    Console.WriteLine("testing");
-                    //}
-                    //else { break; }
+
+                    break;
+                }
+                else
+                {
+
+                    break;
                 }
             }
         }
