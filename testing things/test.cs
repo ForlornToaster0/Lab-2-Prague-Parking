@@ -2,7 +2,7 @@
 
 namespace testing_things
 {
-    class Program
+    class test
     {
         static void Main(string[] args)
         {
@@ -36,7 +36,7 @@ namespace testing_things
             string test = "";
             int activeProgram = 0;
             Random random = new Random();
-            int R = random.Next(0, 2);
+            int R = random.Next(0, 4);
             while (activeProgram < parkingGarage.Length)
             {
                 for (int length = 0; length < Input.Length; length++)
@@ -55,32 +55,23 @@ namespace testing_things
 
 
                 }
-                else if (parkingGarage[R].IndexOf("MC", 0, 2) > -1)
+                else if (parkingGarage[R].IndexOf("MC", 0, 2) > -1 && test.IndexOf("MC",0,2) >-1)
                 {
-                    string combined = "";
-                    int pos = 0;
 
-
-
-                    if (test != parkingGarage[R])
+                    if (test != parkingGarage[R] && !parkingGarage[R].Contains("|"))
                     {
-                         combined = parkingGarage[R] + "|" + test;
+                        parkingGarage[R] = parkingGarage[R] + "|" + test;
 
-                        Console.WriteLine("your spot is {0} {1}", R + 1, combined);
-                        //break;
+
+                        Console.WriteLine("your spot is {0} {1}", R + 1, parkingGarage[R]);
+
                     }
-                    for (int length = 0; length < combined.Length; length++)
-                    {
-                        if (char.IsSymbol(combined[length]))
-                        {
-                            pos = length;
-                            Console.WriteLine("ýeeee");
-                        }
-                    }
+
                     break;
                 }
                 else
                 {
+                   
                     break;
                 }
             }
