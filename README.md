@@ -8,4 +8,4 @@ To see all the parking spaces in the parking garage simply press key 'a' and the
 To move a vehicle press the 'm' key and enter. Then write in the type of the vehicle and it registration number(car abc123ss or mc hej123haj) and enter,
 after that give a new spot to the vehicle.
 
-
+Do not worry about lowercase and uppercase letters. This program is made so that every input turns into uppercase letters.
