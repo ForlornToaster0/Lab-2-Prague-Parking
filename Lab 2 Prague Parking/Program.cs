@@ -4,7 +4,7 @@ namespace Lab_2_Prague_Parking
 {
     class Program
     {
-
+        //welp
         static void Main(string[] args)
         {
             emptyArray();
